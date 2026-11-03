@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with: { dotnet-version: '8.0.x' }
       - run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - run: dotnet run --project tests/CoreTests -c Release
+      - run: dotnet run --project VideoCutter-proyecto/tests/CoreTests -c Release
 
   programa-windows:
     runs-on: windows-latest
@@ -24,7 +24,7 @@ jobs:
         with: { dotnet-version: '8.0.x' }
       - name: Compilar el .exe (no hace falta tener .NET instalado para usarlo)
         run: >
-          dotnet publish src/App/App.csproj -c Release -r win-x64 --self-contained true
+          dotnet publish VideoCutter-proyecto/src/App/App.csproj -c Release -r win-x64 --self-contained true
           -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
           -p:EnableCompressionInSingleFile=true -o publish
       - uses: actions/upload-artifact@v4
